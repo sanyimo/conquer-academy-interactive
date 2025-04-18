@@ -1,0 +1,79 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.contacto {
+    position: relative;
+    &-main {
+        h2 {
+            @include m.responsive-font(1.8rem, 2.6rem, 2.5vw);
+        }
+    }
+    &-title {
+        padding: 2rem 5rem;
+        margin-bottom: 5rem;
+        text-align: center;
+        background-image: radial-gradient(rgba(v.$negro, 0.1) 20%, rgba(v.$azul-oscuro, 0.6) 40%, v.$azul-oscuro 65%), url("../img/contacto.webp");
+        mask-image: radial-gradient(circle, black 0%, rgba(v.$negro, 0) 85%);
+        -webkit-mask-image: radial-gradient(circle, black 0%, rgba(v.$negro, 0) 85%);
+        mask-size: cover;
+        -webkit-mask-size: cover;
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-position: center;
+        background-position: center, center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        width: 90%;
+        margin: 0 auto;
+        border: 2px solid rgba(v.$rosa, 0.15);
+        border-radius: 1rem;
+        box-shadow: inset 1px 1px 0.5rem rgba(v.$rosa, 0.15), 2px 0 2rem rgba(v.$negro, 0.5);
+        
+        
+        &__sub {
+            @include m.descripcion-pagina;
+            margin-top: 3rem;
+            @include m.gap(1.4rem, calc(0.8rem + 2vw), 2rem);
+
+            @include m.tablet {
+                margin-top: 5rem;
+            }
+        }
+
+        @include m.tablet {
+            padding: 6rem 15rem ;  
+        }
+
+        @include m.tablet-horizontal {
+            padding-top: 8rem;
+            width: 80%;       
+        }
+
+        @include m.desktop {
+            padding: 15rem;
+            width: 75%;
+        }
+    }
+}
+
+
+
+.contacto-map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 3rem auto;
+
+    @include m.tablet {
+        height: 100%;
+    }
+
+    iframe {
+        border: 2px solid rgba(v.$blanco, 0.6); 
+        border-radius:5px;
+        box-shadow: 2px 2px 15px rgba(v.$blanco, 0.6);
+        max-height: 100%;
+    }
+}

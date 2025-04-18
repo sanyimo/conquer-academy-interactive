@@ -1,0 +1,46 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+/* pg cursos */
+.cursos {
+    /* título de la pg. */
+    &-title {
+        position: relative;
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        height: 10rem;
+        overflow: hidden;
+        padding: 2rem 1rem 3rem;
+
+        span {
+            @include m.clip-text;
+            display: inline-block;
+            margin-right: 0.5rem;
+            background-image: linear-gradient(45deg, #a382ff, #00ffc3, #ff4b5c, #fddf64);
+            background-size: 400%;
+            animation: textAnimation 5s ease-in-out infinite, gradientMove 3s ease-in-out infinite;
+                
+            &:nth-child(1) {
+                animation-delay: 0.3s;
+            }
+    
+            &:nth-child(2) {
+                animation-delay: 1s;
+            }
+    
+            &:nth-child(3) {
+                animation-delay: 1.7s;
+            }       
+        }
+    }
+    .intro {
+        text-align: center;
+        padding: 2rem;
+        max-width: 85%;
+        margin: 0 auto;
+
+        p {
+            @include m.responsive-font(1.5rem, 1.8rem,1.7vw,);
+        }
+    }
+}

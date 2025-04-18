@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.97 81.37">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        font-family: SpaceGrotesk-Bold, 'Space Grotesk';
+        font-size: 71.63px;
+        font-variation-settings: 'wght' 700;
+        font-weight: 700;
+        letter-spacing: -.07em;
+        stroke: #ededed;
+        stroke-width: .85px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-4 {
+        fill: #fac937;
+      }
+
+      .cls-4, .cls-2, .cls-3 {
+        font-family: MalgunGothicBold, 'Malgun Gothic';
+        font-size: 54px;
+        letter-spacing: .12em;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #f9b233;
+      }
+
+      .cls-3 {
+        stroke: #fbfbfb;
+        stroke-width: .87px;
+      }
+
+      .cls-3, .cls-5 {
+        fill: #1d1d1b;
+      }
+    </style>
+  </defs>
+  <rect class="cls-5" x=".92" y="8.06" width="67.05" height="69.03" rx="6.11" ry="6.11"/>
+  <text class="cls-1" transform="translate(.43 61.31) scale(1.37 1)"><tspan x="0" y="0">Q</tspan></text>
+  <g>
+    <text class="cls-3" transform="translate(11.13 54.16) scale(1.17 1)"><tspan x="0" y="0">A</tspan></text>
+    <text class="cls-4" transform="translate(11.13 54.16) scale(1.17 1)"><tspan x="0" y="0">A</tspan></text>
+    <text class="cls-2" transform="translate(11.13 54.16) scale(1.17 1)"><tspan x="0" y="0">A</tspan></text>
+  </g>
+</svg>

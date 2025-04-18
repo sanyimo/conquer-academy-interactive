@@ -1,0 +1,73 @@
+@use 'variables' as v;
+
+/** Media Queries **/
+@mixin tablet {
+  @media (min-width: v.$tablet) {
+    @content;
+  }
+}
+
+@mixin tablet-horizontal {
+  @media (min-width: v.$tablet-horizontal) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: v.$desktop) {
+    @content;
+  }
+}
+@mixin desktop-xl {
+  @media (min-width: v.$desktop-xl) {
+    @content;
+  }
+}
+
+@mixin headings {
+  font-family: v.$title-font;
+  font-weight: v.$bold;
+  margin: 3rem 0;
+
+  @include tablet {
+    margin: 2rem 0;
+  }
+}
+
+@mixin nombre-pagina {
+  text-align: center;
+
+    @include tablet {
+      @include headings;
+  }
+  
+}
+
+@mixin descripcion-pagina {
+  text-align: center;
+  font-size: clamp(1.4rem, 0.8rem + 2vw, 2rem);
+  font-weight: v.$regular;
+  color: v.$blanco;
+  margin-bottom: 5rem;
+}
+
+@mixin responsive-font($min, $max, $base) {
+  font-size: clamp($min, $base, $max);
+}
+
+@mixin shadow {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  ;
+}
+
+@mixin gap($min, $max, $base) {
+  gap: clamp($min, $base, $max);
+}
+
+@mixin clip-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+

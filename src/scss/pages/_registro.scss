@@ -1,0 +1,104 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.registro-body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+/*Main de registro*/
+.registro {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+    flex: 1;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("../img/icons/grafico.svg") no-repeat center;
+        background-size: cover;
+        background-attachment: fixed;
+        opacity: 0.4;
+        filter: blur(5px);
+        z-index: -1;
+    }
+
+    .form-pages {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page-radio:checked + .page {
+            display: block;
+        }
+    }
+
+    .next-page,
+    .prev-page {
+        margin-top: 1rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    &-title {
+        text-align: center;
+        letter-spacing: 1.5px;
+        margin-bottom: 2.5rem;
+        padding: 2rem;
+        max-width: 90%;
+        margin: 0 auto;
+        text-shadow: 0 0 50px rgba(v.$morado, 0.3);
+    }
+
+    &-footer {
+        display: grid;
+        width: 100%;
+        bottom: 0;
+
+        .footer-top {
+            margin-bottom: 0;
+            width: 100%;
+        }
+
+        .footer-bottom {
+            @include m.tablet-horizontal {
+                justify-self: end;
+            }
+        }
+
+        @include m.tablet {
+            grid-template-columns: 1fr;
+            padding-bottom: 3rem;
+        }
+
+        @include m.tablet-horizontal {
+            grid-template-columns: 1fr 1fr;
+            padding: 1rem 5rem;
+            @include m.gap(1rem, 2rem, 2vw);
+            font-size: 1.2rem;
+        }
+
+        @include m.desktop {
+            padding: 2rem 10rem;
+        }
+
+        @include m.desktop-xl {
+            padding: 3rem 15rem;
+        }
+    }
+}
+

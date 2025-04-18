@@ -1,0 +1,23 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.blog-intro {
+    text-align: center;
+    padding: 2rem;
+    max-width: 85%;
+    margin: 0 auto;
+
+    @include m.desktop {
+        max-width: 70%;
+    }
+
+    .neon {
+        @include m.clip-text;
+        background-image: linear-gradient(90deg, #a382ff, #00ffc3, #a382ff);
+        display: inline-block;
+        background-size: 200%;
+        animation: neonShift 3s linear infinite;
+        font-weight: v.$bold;
+        letter-spacing: 1px;
+    }
+}

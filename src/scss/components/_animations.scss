@@ -1,0 +1,186 @@
+@use 'sass:color';
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+// all keyframes
+
+// Animación para el fondo
+@keyframes auroraBackground {
+  0% {
+    background-position: 250% 50%;
+  }
+
+  50% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 250% 50%;
+  }
+}
+@keyframes drawArrow {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeText {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradientanimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(187, 134, 252, 0.7);
+  }
+
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 1.5rem 0.5rem rgba(187, 134, 252, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(187, 134, 252, 0);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 8px v.$blanco;
+  }
+
+  50% {
+    box-shadow: 0 0 16px v.$morado;
+  }
+}
+
+@keyframes softPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes tipsy {
+  0% {
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(-50%) rotate(360deg);
+  }
+}
+
+@keyframes textAnimation {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes softAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes neonShift {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}

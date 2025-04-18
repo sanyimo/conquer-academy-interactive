@@ -1,0 +1,203 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+/* slider de quienes somos */
+.qs_slider {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 4rem auto;
+  overflow: hidden;
+  background: linear-gradient(to bottom right, #0b0d1a, #111429);
+  border-radius: 2rem;
+  box-shadow: 0 0 3rem rgba(v.$negro, 0.3);
+  color: white;
+  perspective: 1200px;
+
+  input[type='radio'] {
+    display: none;
+  }
+
+  /* contenedor del slider */
+  .qs_slider-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 100%);
+    transition: transform 0.8s ease-in-out;
+    transform-style: preserve-3d;
+  }
+
+  /* slide individual */
+  .qs_slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    opacity: 0.2;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    background: linear-gradient(145deg, #1a1e2c, #0e0f1d);
+    box-shadow: inset 0 0 2rem rgba(v.$blanco, 0.05);
+    transform: rotateY(15deg) translateZ(-200px); /* Efecto 3D al rotar los slides hacia el fondo */
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('../img/icons/grafico-no-square.svg');
+      background-size: 30%;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: -1;
+      transform: rotateY(180deg);
+      filter: blur(6px);
+    }
+
+    h2 {
+      &::after {
+        display: none;
+      }
+
+      color: #a382ff;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      margin: 0 0 2rem;
+      padding: 1rem;
+      transform: rotateY(10deg);
+      transition: transform 0.5s ease;
+    }
+  }
+
+  // 4.slide - Valores organizados en grid
+  .qs_values-boxes {
+    display: grid;
+    @include m.gap(1rem, calc(1rem + 1.5vw), 2rem);
+
+    @include m.tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .qs_value-box {
+      background: rgba(v.$blanco, 0.05);
+      border: 1px solid rgba(v.$blanco, 0.1);
+      padding: 1rem;
+      border-radius: 1rem;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 0 10px rgba(v.$blanco, 0.05);
+
+      h3 {
+        color: #a382ff;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
+  // Control de movimiento
+  #slide1:checked ~ .qs_slider-wrapper {
+    transform: translateX(0);
+  }
+
+  #slide2:checked ~ .qs_slider-wrapper {
+    transform: translateX(-100%);
+  }
+
+  #slide3:checked ~ .qs_slider-wrapper {
+    transform: translateX(-200%);
+  }
+
+  #slide4:checked ~ .qs_slider-wrapper {
+    transform: translateX(-300%);
+  }
+
+  // Controls (bolitas)
+  .qs_slider-controls {
+    display: flex;
+    justify-content: center;
+    @include m.gap(1rem, 1.5rem, calc(0.5rem + 1vw));
+    background: linear-gradient(145deg, #1a1e2c, #0e0f1d);
+    border-radius: 1rem;
+    padding: clamp(1rem, 1.5rem, calc(1rem + 0.5vw));
+
+    label {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background: #444;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: #a382ff;
+      }
+    }
+  }
+
+  // Checked => opacidad actual
+  #slide1:checked ~ .qs_slider-wrapper .qs_slide:nth-child(1),
+  #slide2:checked ~ .qs_slider-wrapper .qs_slide:nth-child(2),
+  #slide3:checked ~ .qs_slider-wrapper .qs_slide:nth-child(3),
+  #slide4:checked ~ .qs_slider-wrapper .qs_slide:nth-child(4) {
+    opacity: 1;
+    transform: rotateY(0deg) translateZ(0);/* Vuelven al centro con efecto 3D */
+  }
+
+  // Checked => bolita activa
+  #slide1:checked ~ .qs_slider-controls label:nth-child(1),
+  #slide2:checked ~ .qs_slider-controls label:nth-child(2),
+  #slide3:checked ~ .qs_slider-controls label:nth-child(3),
+  #slide4:checked ~ .qs_slider-controls label:nth-child(4) {
+    background: linear-gradient(to right, #7f5af0, #00ffc3);
+    box-shadow: 0 0 8px #00ffc3;
+  }
+
+  /* "flechas" - circulos para prev/next */
+  &-arrows {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+
+    label {
+      width: 3rem;
+      height: 3rem;
+      background: rgba(v.$blanco, 0.1);
+      border: 2px solid rgba(v.$blanco, 0.2);
+      backdrop-filter: blur(5px);
+      border-radius: 50%;
+      pointer-events: all;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(v.$negro, 0.4);
+      margin: 0 0.5rem;
+
+      &:hover {
+        background: linear-gradient(to right, #7f5af0, #00ffc3);
+        box-shadow: 0 0 8px #00ffc3;
+      }
+    }
+
+    // Mostrar solo flechas correspondientes a cada slide
+    label {
+      display: none;
+    }
+
+    #slide1:checked ~ & label:nth-child(1),
+    #slide1:checked ~ & label:nth-child(2),
+    #slide2:checked ~ & label:nth-child(3),
+    #slide2:checked ~ & label:nth-child(4),
+    #slide3:checked ~ & label:nth-child(5),
+    #slide3:checked ~ & label:nth-child(6),
+    #slide4:checked ~ & label:nth-child(7),
+    #slide4:checked ~ & label:nth-child(8) {
+      display: block;
+    }
+  }
+}

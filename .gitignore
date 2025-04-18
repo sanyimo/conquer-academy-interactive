@@ -1,0 +1,11 @@
+# ⚙️ Node
+node_modules/
+
+# 🧱 Parcel
+.parcel-cache/
+
+# 💻 Editor
+.vscode/
+
+# 🗂️ Archivos extra
+src-min/

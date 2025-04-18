@@ -1,0 +1,106 @@
+$tablet: 768px;
+$tablet-horizontal: 1024px;
+$desktop: 1200px;
+$desktop-xl: 1440px;
+
+
+$title-font: 'Poppins', sans-serif;
+$body-font: 'Inter', sans-serif;
+
+
+
+
+$negro: rgb(0, 0, 0);
+$azul-oscuro: rgb(9, 11, 23);
+$color-borde: rgb(204, 204, 204);
+$blanco: rgb(255, 255, 255);
+$verde: rgb(0, 255, 224);
+$rosa:rgb(206, 159, 252);
+$morado: rgb(108, 99, 255);
+$morado2: rgb(106, 0, 244);
+$dorado: rgb(255, 215, 0);
+
+$color-error: rgb(226, 85, 85);
+// Fuentes
+$regular: 400;
+$bold: 700;
+$black: 900;
+
+/*para el submit*/
+@layer properties {
+    @property --bg-position {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 100;
+    }
+
+    @property --after-blur {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0;
+    }
+
+    @property --after-opacity {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 1;
+    }
+
+    @property --before-opacity {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 0.3;
+    }
+
+    @property --btn-offset {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 1;
+    }
+
+    @property --btn-scale {
+        syntax: "<number>";
+        inherits: true;
+        initial-value: 1;
+    }
+}
+
+/*SUBMIT boton*/
+:root {
+    --bg-position: 100;
+    --btn-border-width: 1.5;
+    --after-blur: 10;
+    --after-pos-y: 10;
+    --after-opacity: 1;
+    --before-opacity: 0.3;
+    --btn-offset: 1;
+    --btn-scale: 1;
+}
+$after-bg:linear-gradient(to right,
+    rgb(0 0 0),
+    rgb(0 0 0),
+    rgb(0 0 0),
+    rgb(0 0 0),
+    rgb(0 0 0),
+    rgb(0 0 0),
+    rgb(0 0 0),
+    rgb(0 0 0),
+    rgb(0 0 0),
+    rgb(0 0 0),
+    rgb(0 0 0),
+    rgb(0 0 0),
+    rgb(0 0 0),
+    rgb(0 0 0));
+$color-cyan: rgb(0, 255, 255);
+$color-blue: rgb(0, 0, 255);
+$color-purple: rgb(128, 0, 255);
+$color-pink: rgb(209, 148, 179);
+$color-red: rgb(255, 0, 0);
+$color-yellow: rgb(255, 255, 0);
+$color-lime: rgb(191, 255, 128);
+
+$box-shadow-common: inset 0 0 0.5px rgba($blanco, 0.05),
+0 4px 14px rgba($rosa, 0.25),
+0 0 0 0.5px rgba($blanco, 0.04);
+
+$background-gradient-common: linear-gradient(90deg, rgba($rosa, 0.4) 0%, #fff 25%, rgba($rosa, 0.7) 50%, rgba($rosa, 0.7) 100%);

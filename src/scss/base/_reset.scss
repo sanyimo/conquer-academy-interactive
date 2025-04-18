@@ -1,0 +1,68 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+/* 1. Reset básico y base del documento*/
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+/* Reseteo de márgenes y padding */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    
+}
+
+/* Establecer tamaño base de fuente */
+html {
+    font-size: 62.5%; /* 1rem = 10px */
+    min-height: 100%;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Resetear listas */
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* botones por defecto */
+button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Establecer la visibilidad de los inputs */
+input,
+select,
+textarea {
+    outline: none;
+}
+
+/* Enlaces */
+a {
+    text-decoration: none;
+    color: inherit;
+}

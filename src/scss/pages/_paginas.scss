@@ -1,0 +1,19 @@
+@use '../abstracts/mixins' as m;
+
+//paginas de diseño comun (legales)
+.pages {
+  width: 85%;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+  }
+
+  @include m.tablet {
+    width: 80%;
+  }
+
+  @include m.tablet-horizontal {
+    width: 70%;
+  }
+}
