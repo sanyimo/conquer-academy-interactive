@@ -6,6 +6,11 @@
     "start": "parcel index.html pg/*.html",
     "build": "parcel build index.html pg/*.html --dist-dir docs --public-url /conquer-academy-interactive/"
   },
+  "browserslist": [
+    "defaults",
+    "Safari >= 12",
+    "iOS >= 12"
+  ],
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.14.4",
     "@parcel/transformer-webmanifest": "^2.14.4",

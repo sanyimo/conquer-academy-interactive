@@ -1,4 +1,4 @@
-(0,globalThis.parcelRequire6d95.register)("9ZrGt",function(e,t){function o(e){document.querySelector("#contacto").innerHTML="telefono"===e.target.value?`
+(0,("undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{}).parcelRequire6d95.register)("lJpae",function(e,t){function o(e){document.querySelector("#contacto").innerHTML="telefono"===e.target.value?`
     <p>
       <label class="label" for="telefono"></label>
       <input
@@ -47,5 +47,5 @@
         autocomplete="email"
       >
     </p>
-  `}Object.defineProperty(e.exports,"seleccionarMetodo",{get:()=>o,set:void 0,enumerable:!0,configurable:!0}),document.addEventListener("DOMContentLoaded",()=>{let e=document.getElementById("telefono"),t=document.getElementById("email");e&&e.setAttribute("pattern","^\\+?[0-9]{1,3}?[0-9]{7,10}$"),t&&t.setAttribute("pattern","[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")})});
-//# sourceMappingURL=seleccionarMetodo.f0e07524.js.map
+  `}Object.defineProperty(e.exports,"seleccionarMetodo",{get:function(){return o},set:void 0,enumerable:!0,configurable:!0}),document.addEventListener("DOMContentLoaded",()=>{let e=document.getElementById("telefono"),t=document.getElementById("email");e&&e.setAttribute("pattern","^\\+?[0-9]{1,3}?[0-9]{7,10}$"),t&&t.setAttribute("pattern","[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")})});
+//# sourceMappingURL=seleccionarMetodo.df1a7442.js.map
