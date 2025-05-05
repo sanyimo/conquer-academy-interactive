@@ -1,0 +1,37 @@
+@use 'sass:color';
+@use '../abstracts/variables' as v;
+
+/* boton para volver */
+.back-btn {
+    top: 100%;
+    margin-left: 3rem;
+    margin-bottom: 2rem;
+    background-color: color.adjust(v.$azul-oscuro, $lightness: +15%);
+    border: none;
+    padding: 1.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    color: v.$color-borde;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0.2rem 0.6rem rgba(v.$negro, 0.5);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+
+    .arrow-icon {
+        transition: transform 0.2s ease;
+    }
+
+    &:hover {
+        background-color: color.adjust(v.$azul-oscuro, $lightness: +25%);
+        color: v.$blanco;
+
+        .arrow-icon {
+            transform: translateX(-2px);
+        }
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}

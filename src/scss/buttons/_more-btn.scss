@@ -1,0 +1,17 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use '../components/common-more-moreAll';
+
+/* ver más leer más botón */
+.more {
+    @extend .common-more-moreAll;
+    font-size: clamp(1.3rem, 1.4vw, 1.5rem);
+
+    &-wrapper {
+        @include m.boton-wrapper(28rem, linear-gradient(135deg, #3c3352, #4b3b61), 1rem);
+    }
+
+    &::before {
+        @include m.borde-animado(v.$rosa, rgba(v.$blanco, 0.5), v.$rosa);
+    }
+}

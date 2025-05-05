@@ -1,0 +1,118 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use '../components/animations';
+@use '../buttons/back-btn';
+@use '../components/item';
+
+/*blog articulos*/
+.article {
+    text-align: center;
+    position: relative;
+    margin: 0 auto;
+
+    &_title {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    span {
+        color: #a382ff;
+    }
+
+    &_container {
+        padding: 0  2rem  4rem;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        @include m.gap (1rem, 2rem, calc(1rem + 1.5vw));
+        width: 95%;
+
+        @include m.tablet {
+            width: 90%;
+            max-width: 100rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include m.desktop {
+            width: 80%;
+            max-width: 120rem;
+        }
+
+        @include m.desktop-xl {
+            width: 70%;
+            max-width: 140rem;
+        }
+
+        /*Primer párrafo del articulo*/
+        &-intro {
+            text-align: center;
+            margin: 0 auto 3rem;
+            grid-column: span 2;
+
+            h2 {
+                margin-top: 0;
+                margin-bottom: 3rem;
+            }
+
+            p {
+                color: rgba(v.$blanco, 0.7);
+                max-width: 60ch;
+                margin: 0 auto;
+            }
+        }
+
+        /*Seccion del articulo*/
+        &-post {
+            width: 100%;
+            height: 100%;
+            padding: 2rem;
+            background: rgba(v.$blanco, 0.03);
+            border-left: 3px solid v.$morado;
+            border-radius: 1rem;
+            box-shadow: 0 0 2rem rgba(v.$negro, 0.2);
+
+            h3 {
+                @include m.responsive-font(1.6rem, 1.8rem, 1.6vw);
+                margin-bottom: 1rem;
+                color: #a382ff;
+            }
+
+            p {
+                font-size: 1.5rem;
+                line-height: 1.6;
+                color: rgba(v.$blanco, 0.8);
+            }
+        }
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("../../src/img/icons/grafico.svg");
+        background-size: 8% 8%;
+        opacity: 0.2;
+        filter: blur(5px);
+        z-index: -1;
+
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        max-width: 1000px;
+        height: auto;
+        margin: 0 auto 3rem;
+        border-radius: 1rem;
+
+        @include m.tablet-horizontal {
+            width: 90%;
+        }
+    }
+}

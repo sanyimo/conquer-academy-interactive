@@ -1,0 +1,23 @@
+@use '../abstracts/mixins' as m;
+
+// Últimos cursos y Blog
+.latest-courses,
+.blog {
+    @include m.responsive-font(1.4rem, 1.6rem, 1.5vw);
+    max-width: 95%;
+    margin: 5rem auto 2rem;
+
+    @include m.tablet {
+        @include m.gap(1rem, 2.5rem, 2vw);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include m.tablet-horizontal {
+        max-width: 80%;
+    }
+
+    @include m.desktop {
+        max-width: 70%;
+    }
+}

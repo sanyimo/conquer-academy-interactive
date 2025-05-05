@@ -1,0 +1,39 @@
+@use '../abstracts/variables' as v;
+
+.error404 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 2rem;
+
+    &__content {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    &__title {
+        font-size: 8rem;
+        margin-bottom: 1rem;
+        color: v.$color-error;
+    }
+
+    &__text {
+        margin-bottom: 2rem;
+    }
+
+    &__btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background-color: v.$morado;
+        border-radius: 0.5rem;
+        font-weight: v.$bold;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: v.$morado2;
+        }
+    }
+}

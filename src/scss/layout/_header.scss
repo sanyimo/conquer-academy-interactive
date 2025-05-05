@@ -1,0 +1,148 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+@use '../base/base';
+
+.header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4rem;
+    margin: 0 auto;
+    background: transparent;
+    z-index: 2;
+    top: 0;
+    width: 100%;
+    perspective: 120rem;
+
+    // Solo en index: posición absoluta sobre hero
+    .index & {
+        position: absolute;
+    }
+
+    @include m.tablet-horizontal {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 4rem;
+    }
+
+    @include m.desktop {
+        padding: 4rem 6rem;
+    }
+
+    &-pod {
+        position: absolute;
+        top: 100%;
+        background: linear-gradient(135deg, v.$azul-oscuro, rgba(v.$negro, 0.9));
+        border: 1px solid transparent;
+        border-radius: 1rem;
+        box-shadow: 0 0.1rem 1rem rgba(v.$negro, 0.2);
+        z-index: 5;
+        margin: 0 auto;
+        height: auto;
+        overflow: hidden;
+        transform-origin: top center;
+        transform: scaleY(0);
+        opacity: 0;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+
+        &.active {
+            transform: scaleY(1);
+            opacity: 1;
+
+            @include m.tablet-horizontal {
+                transform: scaleX(1);
+            }
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3rem 5rem;
+            gap: 5rem;
+
+            .menu-links {
+                @include m.nav-links(2rem, 4rem, 3vw);
+            }
+        
+            .auth-links {
+                @include m.nav-links(2rem, 4rem, 3vw);
+            }
+
+            // Ocultar iconos por defecto
+            .menu-icon,
+            .auth-icon {
+                display: none;
+            }
+
+            @include m.tablet-horizontal {
+                flex-direction: row;
+                padding: 2.5rem 3rem;
+                width: auto;
+                gap: 10rem;
+
+                .menu-links,
+                .auth-links {
+                    flex-direction: row;
+                    gap: 5rem;
+
+                    a {
+                        transition: all 0.3s ease-in-out;
+
+                        .menu-icon,
+                        .auth-icon {
+                            display: block;
+                            width: 3rem;
+                            height: 3rem;
+                            transition: transform 0.3s ease;
+                        }
+
+                        .menu-text,
+                        .auth-text {
+                            position: absolute;
+                            top: 100%;
+                            left: 50%;
+                            transform: translate(-50%, -1rem);
+                            white-space: nowrap;
+                            opacity: 0;
+                            pointer-events: none;
+                        }
+
+                        &:hover {
+                            .menu-text,
+                            .auth-text {
+                                opacity: 1;
+                                transform: translate(-50%, 0.5rem);
+                                pointer-events: auto;
+                            }
+
+                            .menu-icon,
+                            .auth-icon {
+                                @include m.hover-glow(v.$blanco);
+                            }
+                        }
+                         @include m.active-scale;
+                    }
+                }
+            }
+        }
+
+        @include m.tablet-horizontal {
+            background: transparent;
+            border: 2px solid rgba(v.$blanco, 0.3);
+            box-shadow:
+                    0.4rem -0.4rem 1rem rgba(v.$negro, 0.6),
+                    inset 0 0 1.2rem rgba(v.$blanco, 0.15);
+            top: 4rem;
+            right: 11rem;
+            transform-origin: right center;
+            transform: scaleX(0);
+            opacity: 0;
+        }
+    }
+}

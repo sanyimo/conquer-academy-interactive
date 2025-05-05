@@ -1,0 +1,66 @@
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotateY(0deg) rotateX(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotateY(360deg) rotateX(360deg);
+    }
+}
+
+@keyframes orbit {
+    0% {
+        opacity: 0;
+        transform: rotateZ(calc(-1deg * var(--z))) rotateY(calc(var(--y) * 1deg)) translateX(0) rotateZ(calc(var(--z) * 1deg));
+    }
+
+    10% {
+        opacity: 1;
+        transform: rotateZ(calc(-1deg * var(--z))) rotateY(calc(var(--y) * 1deg)) translateX(calc(var(--orb-size) * 0.5)) rotateZ(calc(var(--z) * 1deg));
+    }
+
+    50% {
+        transform: rotateZ(calc(-1deg * var(--z))) rotateY(calc(var(--y) * 1deg)) translateX(var(--orb-size)) rotateZ(calc(var(--z) * 1deg));
+    }
+
+    90% {
+        transform: rotateZ(calc(-1deg * var(--z))) rotateY(calc(var(--y) * 1deg)) translateX(calc(var(--orb-size) * 0.5)) rotateZ(calc(var(--z) * 1deg));
+    }
+
+    100% {
+        transform: rotateZ(calc(-1deg * var(--z))) rotateY(calc(var(--y) * 1deg)) translateX(calc(var(--orb-size) * 2)) rotateZ(calc(var(--z) * 1deg));
+    }
+}
+
+// Estilos base para el wrap
+.wrap {
+    --total: 200;
+    --base-hue: 180;
+    --orb-size: 30rem;
+    --part-size: 2px;
+    --rotate-speed: 18s;
+    --saturation:100%;
+    --lightness: 50%;
+    --color: hsl(var(--base-hue), var(--saturation), var(--lightness));
+    
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform-style: preserve-3d;
+    perspective: 100rem;
+    animation: rotate var(--rotate-speed) infinite linear;
+    z-index: 1;
+    pointer-events: none;
+
+    .particle {
+        background-color: var(--color);
+        position: absolute;
+        width: var(--part-size);
+        height: var(--part-size);
+        border-radius: 50%;
+        opacity: 0;
+        animation: orbit 8s infinite ease-in-out;
+    }
+}

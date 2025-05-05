@@ -1,0 +1,22 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.hidden {
+    visibility: hidden;
+}
+
+body {
+    @include m.responsive-font(1.4rem, 1.6rem, 1.5vw);
+    font-family: v.$body-font;
+    min-height: 100vh;
+    letter-spacing: 0.03em;
+    color: v.$blanco;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(circle at center, rgb(11 13 31) 0%, rgb(9 11 23) 60%, #06070e 100%);
+}
+
+main {
+    flex: 1;
+}

@@ -1,0 +1,40 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+// Estilos comunespara more/more_all
+.common-more-moreAll {
+    @include m.responsive-font(1.3rem, 1.5rem, 1.4vw);
+    position: relative;
+    text-transform: uppercase;
+    text-align: center;
+    display: inline-block;
+    font-weight: v.$bold;
+    width: 100%;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    border: none;
+    z-index: 1;
+    box-shadow: v.$box-shadow-common;
+    background-image: v.$background-gradient-common;
+    background-size: 400%;
+    background-position: 100% 0;
+    @include m.clip-text;
+    transition: background-position 0.6s ease, transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        background-position: 0% 0;
+
+        &::before {
+            background-position: 0% 0;
+        }
+    }
+
+    &:active {
+        transform: scale(0.98);
+        box-shadow: 0 2px 6px rgb(v.$rosa, 0.2);
+
+        &::before {
+            background-position: 12.5% 0;
+        }
+    }
+}

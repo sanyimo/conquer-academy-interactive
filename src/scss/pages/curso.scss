@@ -1,0 +1,218 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use '../components/animations';
+@use '../buttons/back-btn';
+@use '../buttons/cta-btn';
+
+/*pg. de curso individual*/
+.curso {
+    margin: 0 auto;
+    text-align: center;
+
+    &-title {
+        margin-top: 0;
+        margin-bottom: 2rem
+    }
+
+    h2 {
+        @include m.responsive-font(1.8rem, 2.5rem, 4.5vw);
+    }
+
+    &-container {
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        margin: 0 auto;
+
+        @include m.tablet {
+            @include m.gap(1rem, 2rem, 2vw);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            width: 90%;
+            max-width: 1000px;
+        }
+
+        @include m.tablet-horizontal {
+            width: 80%;
+        }
+
+        @include m.desktop {
+            width: 70%;
+        }
+    }
+
+    /* sections en bloques separados */
+    &-features {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg,
+                rgba(#8f44fd, 0.15),
+                rgba(v.$verde, 0.08),
+                rgba(v.$morado2, 0.15),
+                rgba(#c084fc, 0.1));
+        background-size: 300% 300%;
+        padding: 2.5rem;
+        border-radius: 1.5rem;
+        box-shadow:
+            0 0 2rem rgba(#8f44fd, 0.2),
+            inset 0 0 1rem rgba(v.$blanco, 0.05);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border: 1px solid rgba(v.$blanco, 0.08);
+        transition: transform 0.3s ease;
+
+        // Pseudo-elemento con el glow más evidente
+        &::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(v.$blanco, 0.15) 0%, transparent 70%);
+            animation: softPulse 3s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        // Asegura que el contenido esté por encima
+        > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        &:hover {
+            box-shadow: 0 0 3rem rgba(#c084fc, 0.3);
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+
+
+        &:last-child {
+            grid-column: span 2;
+        }
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 0 auto 3rem;
+        border-radius: 1rem;
+
+        @include m.tablet-horizontal {
+            width: 85%;
+        }
+
+        @include m.desktop {
+            width: 75%;
+        }
+    }
+
+    /* ultimo sect -grid */
+    &-lista {
+        list-style-type: none;
+        padding-left: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        @include m.gap(1rem, 2rem, 2vw);
+        margin-top: 2rem;
+
+        @include m.tablet {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include m.desktop {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        li {
+            padding: 2rem;
+            border-radius: 1rem;
+            background: linear-gradient(135deg,
+                    rgba(v.$morado, 0.05),
+                    rgba(v.$blanco, 0.1),
+                    rgba(v.$morado, 0.05));
+            box-shadow: 0 0 15rem rgba(v.$blanco, 0.15);
+            transition: box-shadow 0.3s ease, background 0.3s ease;
+            backdrop-filter: blur(3px);
+
+            @include m.tablet-horizontal {
+                &:hover {
+                    box-shadow: 0 1rem 2rem rgba(v.$blanco, 0.15);
+                    background: linear-gradient(135deg,
+                            rgba(v.$morado, 0.2),
+                            rgba(v.$blanco, 0.15),
+                            rgba(v.$morado, 0.2));
+                }
+            }
+        }
+    }
+
+    /* cta de curso */
+    .cta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        padding: 4rem;
+        width: 95%;
+        background: linear-gradient(20deg,
+            rgba(v.$morado2, 0.6),
+            rgba(v.$morado, 0.4),
+            rgba(v.$verde, 0.7),
+            rgba(v.$morado, 0.6));
+        background-size: 250%;
+        animation: gradientMove 8s ease-in-out infinite;
+        border-radius: 1.5rem;
+        box-shadow: 0 0 2rem rgba(v.$blanco, 0.2);
+        margin: 3rem auto;
+
+        @include m.tablet {
+            position: relative;
+            overflow: hidden;
+            width: 90%;
+
+            // Capa para la imagen fija
+            &::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: url('../../src/img/icons/grafico.svg') no-repeat center right 10%;
+                background-size: 30%;
+                transform: rotateX(180deg);
+                z-index: -1;
+            }
+        }
+
+        @include m.tablet-horizontal {
+            width: 80%;
+        }
+
+        @include m.desktop {
+            width: 70%;
+        }
+
+        h2 {
+            color: v.$blanco;
+            text-shadow: 0.2rem 0.2rem .5rem rgba(v.$dorado, 0.8);
+            margin-bottom: 2.5rem;
+        }
+
+        p {
+            @include m.responsive-font(1.4rem, 1.8rem, 1.5vw);
+            width: 100%;
+            margin: 0 auto 2rem;
+            text-align: center;
+            color: v.$blanco;
+            margin-bottom: 2rem;
+
+            @include m.tablet {
+                width: 60%;
+            }
+        }
+    }
+}

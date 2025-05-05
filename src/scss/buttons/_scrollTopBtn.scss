@@ -1,0 +1,87 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+/*dibuja la flecha del boton 'ir arriba'*/
+@keyframes drawArrow {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(v.$rosa, 0.7);
+    }
+
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 1.5rem 0.5rem rgba(v.$rosa, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(v.$rosa, 0);
+    }
+}
+
+/* Ir arriba botón */
+.scrollTopBtn {
+    position: fixed;
+    width: 5rem;
+    height: 5rem;
+    bottom: 3rem;
+    right: 3rem;
+    background: linear-gradient(145deg, rgba(v.$morado, 0.8), rgba(v.$morado2, 0.8));
+    border: 2px solid rgba(v.$blanco, 0.2);
+    border-radius: 50%;
+    opacity: 0;
+    cursor: pointer;
+    display: none; // controlado por JS
+
+    @include m.tablet-horizontal {
+        transform: scale(0.8);
+        pointer-events: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+        z-index: 20;
+
+        svg.arrow-svg {
+            width: 2.4rem;
+            height: 2.4rem;
+            stroke: v.$blanco;
+            stroke-dasharray: 40;
+            stroke-dashoffset: 40;
+            animation: drawArrow 1s ease forwards;
+        }
+
+        &:hover {
+            background: linear-gradient(135deg, lighten(v.$morado, 5%), lighten(v.$morado2, 5%));
+            box-shadow: 0 0 1rem rgba(v.$rosa, 0.6);
+        }
+
+        &:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 0.4rem rgba(v.$rosa, 0.3);
+        }
+
+        &[style*="display: block"] {
+            animation: fadeInUp 0.4s ease forwards, pulse 2s infinite 0.5s;
+            pointer-events: auto;
+        }
+    }
+}

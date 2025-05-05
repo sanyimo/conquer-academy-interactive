@@ -1,0 +1,75 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+/* botón de hamburguesa */
+.trigger-wrapper {
+    z-index: 100;
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.4s ease;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    @include m.tablet-horizontal {
+        top: 4rem;
+        right: 4rem;
+    }
+
+    /* Botón de menú */
+    .menu-toggle {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 5rem;
+        height: 4rem;
+        background-color: transparent;
+        cursor: pointer;
+        padding: 0;
+        transition: transform 0.4s ease, background-color 0.4s ease;
+
+        @include m.tablet-horizontal {
+            align-items: flex-end;
+        }
+
+        .bar {
+            height: 3px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, v.$blanco, rgba(v.$blanco, 0.4));
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        .bar-top,
+        .bar-bottom {
+            width: 100%;
+        }
+
+        .bar-middle {
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        &.active {
+            .bar-top {
+                transform: translateX(-80px);
+                opacity: 0;
+            }
+
+            .bar-bottom {
+                transform: translateX(80px);
+                opacity: 0;
+            }
+
+            .bar-middle {
+                width: 100%;
+                background: linear-gradient(270deg, v.$blanco, v.$azul-oscuro);
+                animation: pulse-glow 1.5s infinite ease-in-out;
+            }
+        }
+    }
+}

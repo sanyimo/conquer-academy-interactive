@@ -1,0 +1,35 @@
+@use '../abstracts/variables' as v;
+
+// Estilos generales para los inputs válidos e inválidos
+.login-form__input,
+.contacto .contacto-form__input,
+.registro-form__input,
+.contacto textarea,
+textarea  {
+
+    &.valid {
+        border-color: v.$verde;
+        box-shadow: 0 0 0.3rem rgba(v.$verde, 0.5);
+    }
+
+    &.error {
+        border-color: #ff6b6b;
+        box-shadow: 0 0 0.3rem rgba(v.$color-error, 0.5);
+    }
+}
+.error-message {
+    color: #ff6b6b;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    display: none;
+    transform: translateY(-5px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    min-height: 1.5rem;
+
+    &.visible {
+        display: block;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}

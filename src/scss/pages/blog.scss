@@ -1,0 +1,42 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+@use '../buttons/more-btn';
+@use '../buttons/more-all-btn';
+@use '../components/item';
+@use '../components/latest';
+
+@keyframes neonShift {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+.blogart-main {
+    max-width: 180rem;
+    margin: 0 auto 5rem;
+}
+
+.blog-intro {
+    text-align: center;
+    padding: 2rem;
+    max-width: 85%;
+    margin: 0 auto;
+
+    @include m.desktop {
+        max-width: 70%;
+    }
+
+    .neon {
+        @include m.clip-text;
+        background-image: linear-gradient(90deg, #a382ff, #00ffc3, #a382ff);
+        display: inline-block;
+        background-size: 200%;
+        animation: neonShift 3s linear infinite;
+        font-weight: v.$bold;
+        letter-spacing: 1px;
+    }
+}

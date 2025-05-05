@@ -1,0 +1,110 @@
+@use '../abstracts/variables' as v;
+
+.form-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(v.$negro, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    animation: fadeInContent 0.5s ease-out forwards;
+    z-index: 2;
+}
+
+.form-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.form-modal__content {
+    background: radial-gradient(at center, rgba(v.$morado, 0.6), rgba(v.$blanco, 0.4));
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 2px solid rgba(v.$verde, 0.6);
+    text-align: center;
+    max-width: 40rem;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.circle {
+    position: absolute;
+    top: 23%;
+    left: 40%;
+    width: 7rem;
+    height: 7rem;
+    border: 0.5rem solid rgba(v.$verde, 0.6);
+    border-radius: 50%;
+    animation: growCircle 0.6s ease-out forwards;
+}
+
+.checkmark {
+    width: 10rem;
+    height: 10rem;
+    margin-bottom: 2rem;
+    animation: drawCheckmark 0.8s ease-in-out forwards;
+}
+
+@keyframes drawCheckmark {
+    0% {
+        stroke-dasharray: 0, 100;
+    }
+
+    100% {
+        stroke-dasharray: 100, 0;
+    }
+}
+@keyframes growCircle {
+    0% {
+        transform: scale(0);
+        /* Empieza pequeño */
+        opacity: 0;
+        /* Completamente invisible */
+    }
+
+    50% {
+        transform: scale(1.2);
+        /* Expande un poco el círculo */
+        opacity: 0.6;
+        /* Hacerlo un poco visible */
+    }
+
+    100% {
+        transform: scale(1);
+        /* Vuelve al tamaño original */
+        opacity: 1;
+        /* Completa la visibilidad */
+    }
+}
+
+.modal-text {
+    font-size: 1.4rem;
+    color: v.$verde;
+    text-shadow: 0 0 0.4rem rgba(v.$negro, 0.3);
+    margin-top: 1rem;
+    font-weight: v.$bold;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInContent 0.6s ease-out 0.4s forwards;
+}
+@keyframes fadeInContent {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+        /* Desplazamiento desde abajo */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        /* Vuelve a la posición original */
+    }
+}

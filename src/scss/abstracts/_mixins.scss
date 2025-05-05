@@ -1,0 +1,233 @@
+@use 'variables' as v;
+
+/** Media Queries **/
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+
+@mixin tablet-horizontal {
+    @media (min-width: v.$tablet-horizontal) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+
+@mixin desktop-xl {
+    @media (min-width: v.$desktop-xl) {
+        @content;
+    }
+}
+
+@mixin headings {
+    font-family: v.$title-font;
+    font-weight: v.$bold;
+    margin: 3rem 0;
+
+    @include tablet {
+        margin: 2rem 0;
+    }
+}
+
+@mixin nombre-pagina {
+    text-align: center;
+
+    @include tablet {
+        @include headings;
+    }
+}
+
+@mixin descripcion-pagina {
+    text-align: center;
+    font-size: clamp(1.4rem, 0.8rem + 2vw, 2rem);
+    font-weight: v.$regular;
+    color: v.$blanco;
+    margin-bottom: 5rem;
+}
+
+@mixin responsive-font($min, $max, $base) {
+    font-size: clamp($min, $base, $max);
+}
+
+@mixin nav-links($gap-min, $gap-max, $gap-base) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    @include gap($gap-min, $gap-max, $gap-base);
+
+    a {
+        display: flex;
+        align-items: center;
+        color: white;
+        font-size: 1.6rem;
+        text-decoration: none;
+        text-shadow: 1px 1px 10px rgba(v.$blanco, 0.6);
+        transition: color 0.3s ease, transform 0.4s ease-in-out;
+
+        .nav-icon {
+            display: none;
+            width: 4rem;
+            height: 4rem;
+        }
+
+        .nav-text {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        &:hover {
+            font-weight:  v.$bold;
+            transform: translateY(-12px) scale(1.1);
+            @include glow(v.$blanco);
+
+            .nav-icon {
+                transform: scale(1.1);
+            }
+
+            .nav-text {
+                opacity: 1;
+                transform: translate(-50%, 5px);
+                pointer-events: auto;
+            }
+        }
+
+        &:active {
+            transform: scale(0.9);
+        }
+    }
+
+    @include tablet-horizontal {
+        flex-direction: row;
+        @include gap($gap-min * 1.5, $gap-max * 1.5, $gap-base * 1.5); //mayor separación en horizontal
+
+        a {
+            text-shadow: 2px 2px 8px rgba(v.$blanco, 0.6);
+            border: 2px solid transparent;
+            border-radius: 2px;
+
+            .nav-icon {
+                display: block;
+                width: 3rem;
+                height: 3rem;
+                transition: transform 0.3s ease;
+            }
+
+            .nav-text {
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translate(-50%, -10px);
+                white-space: nowrap;
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+    }
+}
+
+@mixin glow($color) {
+    filter:
+        drop-shadow(0 0 5px rgba($color, 0.8)) 
+        drop-shadow(0 0 20px rgba($color, 0.6)) 
+        drop-shadow(0 0 30px rgba($color, 0.4));
+}
+
+// Glow al hacer hover (con escala)
+@mixin hover-glow($color: v.$blanco) {
+    &:hover {
+        transform: scale(1.1);
+        @include glow($color);
+    }
+}
+
+// Active con escala reducida
+@mixin active-scale {
+    &:active {
+        transform: scale(0.96);
+    }
+}
+
+// Link con gradiente animado y clip text
+@mixin link-gradient($color1, $color2) {
+    @include gradiente-animado($color1, $color2);
+    background-size: 400%;
+    background-position: 100% 0;
+    @include clip-text;
+    transition: transform 0.3s ease-in-out, background-position 0.6s ease;
+
+    &:hover {
+        background-position: 0% 0;
+        transform: scale(1.03);
+    }
+
+    &:active {
+        transform: scale(0.96);
+        background-position: 12.5% 0;
+    }
+}
+
+@mixin gap($min, $max, $base) {
+    gap: clamp($min, $base, $max);
+}
+
+@mixin clip-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+@mixin gradiente-animado($color-izq, $color-centro, $color-der:$color-izq, $color-der2:$color-izq) {
+    background-image: linear-gradient(90deg,
+        $color-izq 0%,
+        $color-centro 25%,
+        $color-der 50%,
+        $color-der2 100%);
+}
+
+@mixin boton-wrapper($max-width, $background, $margin) {
+    display: flex;
+    justify-content: center;
+    max-width: $max-width;
+    background: $background;
+    margin: $margin auto;
+}
+
+@mixin mascara-xor($color: v.$blanco) {
+    mask: linear-gradient(#{$color} 0 0) content-box,
+    linear-gradient(#{$color} 0 0);
+    -webkit-mask: linear-gradient(#{$color} 0 0) content-box,
+    linear-gradient(#{$color} 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+}
+
+@mixin borde-animado($color-izq, $color-centro, $color-der) {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+    background: linear-gradient(90deg,
+            rgba($color-izq, 0.4) 0%,
+            $color-centro 25%,
+            rgba($color-der, 0.4) 50%,
+            rgba($color-der, 0.4) 100%);
+    background-size: 400%;
+    background-position: 100% 0;
+    border-radius: 0.5rem;
+    transition: background-position 0.6s ease;
+    padding: 2px;
+
+    @include mascara-xor();
+}

@@ -1,0 +1,17 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+@use '../components/common-more-moreAll';
+
+/* boton de ver todos */
+.more_all {
+    @extend .common-more-moreAll;
+    @include m.responsive-font(1.1rem, 1.4rem, 1.2vw);
+
+    &-wrapper {
+        @include m.boton-wrapper(35rem, linear-gradient(145deg, #2a2a40, #3e3e60), 5rem auto 0);
+    }
+
+    &::before {
+        @include m.borde-animado(v.$rosa, v.$blanco, v.$rosa);
+    }
+}

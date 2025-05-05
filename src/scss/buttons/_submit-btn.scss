@@ -1,0 +1,120 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+/* submit botón */
+.submit-btn {
+    all: unset;
+    background: transparent;
+    border-width: 0;
+    transform: scale(1);
+    transition:
+        --bg-position 3s ease,
+        --after-blur 0.3s ease,
+        --before-opacity 0.3s ease,
+        --btn-offset 0.3s ease,
+        --btn-scale 0.2s cubic-bezier(.76, -0.25, .51, 1.13);
+    margin: 2rem auto;
+    width: 80%;
+
+    > div {
+        display: block;
+        padding: 1em 1.2em;
+        background: v.$azul-oscuro;
+        color: v.$blanco;
+        font-weight: v.$bold;
+        border-radius: 8px;
+        position: relative;
+        cursor: pointer;
+        text-align: center;
+
+        &:not(:hover) {
+            transition: --after-blur 0.3s ease;
+        }
+    }
+
+    span {
+        background: linear-gradient(to right,
+                v.$blanco,
+                v.$blanco,
+                v.$color-cyan,
+                v.$color-blue,
+                v.$color-purple,
+                v.$color-pink,
+                v.$color-red,
+                v.$color-yellow,
+                v.$color-lime,
+                v.$blanco,
+                v.$blanco) no-repeat calc(var(--bg-position) * 1%) 0% / 900%;
+        @include m.clip-text;
+        letter-spacing: 0.15ch;
+        font-weight: v.$bold;
+    }
+
+    &::after {
+        display: block;
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: v.$after-bg no-repeat calc(var(--bg-position) * 1%) 0% / 900%;
+        transform: translateY(calc(var(--after-pos-y) * 1px));
+        left: 0;
+        top: 0;
+        z-index: -2;
+        filter: blur(calc(var(--after-blur) * 1px));
+        opacity: var(--after-opacity);
+    }
+
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: calc(100% + calc(calc(var(--btn-border-width) * 2) * 1px));
+        height: calc(100% + calc(calc(var(--btn-border-width) * 2) * 1px));
+        background: linear-gradient(to right,
+                v.$blanco,
+                v.$blanco,
+                v.$color-cyan,
+                v.$color-blue,
+                v.$color-purple,
+                v.$color-pink,
+                v.$color-red,
+                v.$color-yellow,
+                v.$color-lime,
+                v.$blanco,
+                v.$blanco) no-repeat calc(var(--bg-position) * 1%) 0% / 900%;
+        border-radius: 9px;
+        z-index: -1;
+        top: calc(var(--btn-border-width) * -1px);
+        left: calc(var(--btn-border-width) * -1px);
+        opacity: var(--before-opacity);
+    }
+
+    &:hover {
+        --btn-scale: 1.05;
+        --bg-position: 0;
+        --after-bg: linear-gradient(to right,
+                v.$blanco,
+                v.$blanco,
+                v.$color-cyan,
+                v.$color-blue,
+                v.$color-purple,
+                v.$color-pink,
+                v.$color-red,
+                v.$color-yellow,
+                v.$color-lime,
+                v.$blanco,
+                v.$blanco);
+        --after-blur: 30;
+        --after-opacity: 0.3;
+        --after-pos-y: 0;
+        --before-opacity: 1;
+        --btn-offset: 5;
+
+        &:active {
+            --btn-scale: 0.98;
+            --after-blur: 15;
+            transform: scale(0.96)
+        }
+    }
+}
